@@ -124,5 +124,25 @@ describe('New Feed Selection', function () {
    * Remember, loadFeed() is asynchronous.
    */
 
+
+    var feedContents;
+  beforeEach(function(done){
+    loadFeed(0, function(){
+      feedContents = $('.feed').html();
+      loadFeed(1, done);
+    });
+  });
+
+  it('a new feed is loaded by the loadFeed & content changes', function(){
+    expect($('.feed').html()).not.toBe(feedContents);
+  });
 });
 }());
+
+
+
+
+
+
+
+
